@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PruebaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\IsLogedMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +27,9 @@ Route::get("/articulos/{id}", function ($id){
        echo $articulo->Nombre_Articulo . "<br>";
    }
 });
+
+//Route::middleware("IslogedMiddleware");
+Route::get('user', [PruebaController::class, 'user'])->middleware(IsLogedMiddleware::class);
+Route::post('login', [LoginController::class, 'authenticate']);
+
+//->middleware(IsLogedMiddleware::class)

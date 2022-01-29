@@ -26,11 +26,11 @@ class Articulo extends Model
         'remember_token',
     ];
 
-    public function articulosClientes(): BelongsTo {
+    public function articulosClientes() {
         return $this->belongsTo(Cliente::class);
     }
 
-    public function articulosProveedor(): HasOne {
+    public function articulosProveedor() {
         return $this->hasOne(Proveedor::class);
     }
 }

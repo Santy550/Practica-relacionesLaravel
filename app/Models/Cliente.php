@@ -3,16 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Cliente extends Model
+class Cliente extends Authenticatable
 {
     use HasFactory;
 
     protected $fillable = [
         'nombre',
         'apellidos',
+        'email',
+        'password',
+        'remember_token'
     ];
 
     protected $hidden = [
@@ -21,7 +25,7 @@ class Cliente extends Model
         'remember_token',
     ];
 
-    public function clientesArticulos(): HasMany {
+    public function clientesArticulos() {
         return $this->hasMany(Articulo::class);
     }
 
